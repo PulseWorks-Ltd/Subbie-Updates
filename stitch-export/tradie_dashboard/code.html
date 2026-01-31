@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tradie Dashboard - Subbie Updates</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2590d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="flex flex-col min-h-screen max-w-md mx-auto relative border-x border-slate-200 dark:border-white/5">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5">
+<div class="flex items-center px-4 py-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 overflow-hidden rounded-full border-2 border-primary">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="Profile picture of a professional builder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmyhsV1XOg06LWdKWJ3px_51jgxMrFmd-xcIRTBcJlCIUfTVjtYVI0ODxH2emtQ_o9UL_i1aL7g3UY3NcQfl1-3XL55u_QQgBs41UVaAwfZnh1c840QFF23GOjk95COLcT28J4Jja-wC49Tx0eGegD6KwYJqz7zd5D9n4DOt6yMrKhrCvc_YChuG0NUog6UsqS5iNXo2XjQ-fvA98wS5egbFsmVkaIUr-B0fS_sWY8GDX54oHeXLwHYRbDfSX4sEXr7RpnUt7zQv3c");'></div>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold">Main Dashboard</p>
+<h2 class="text-lg font-bold leading-tight">Subbie Updates</h2>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 pb-24">
+<!-- Greeting & Stats -->
+<section class="px-4 pt-6 pb-2">
+<h1 class="text-3xl font-bold tracking-tight">G'day, Mike</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">You have 3 updates due today.</p>
+</section>
+<!-- Priority List: Updates Due Today -->
+<section class="mt-6">
+<div class="flex items-center justify-between px-4 mb-3">
+<h3 class="text-primary text-sm font-bold uppercase tracking-widest">Updates Due Today</h3>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full border border-primary/30">URGENT</span>
+</div>
+<div class="space-y-3 px-4">
+<!-- Project Card 1 -->
+<div class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">construction</span>
+</div>
+<div>
+<p class="font-bold text-lg leading-tight">Oak St. Extension</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Client: Sarah Miller</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="size-3 rounded-full bg-red-500 animate-pulse"></span>
+<p class="text-[10px] mt-1 text-red-500 font-bold uppercase">Overdue</p>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Last updated: 3 days ago</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+                            NEW UPDATE
+                        </button>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">deck</span>
+</div>
+<div>
+<p class="font-bold text-lg leading-tight">Bayside Decking</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Client: James Chen</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="size-3 rounded-full bg-amber-500"></span>
+<p class="text-[10px] mt-1 text-amber-500 font-bold uppercase">Due Soon</p>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Last updated: 24 hours ago</span>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+                            NEW UPDATE
+                        </button>
+</div>
+</div>
+</section>
+<!-- Active Projects Section -->
+<section class="mt-8">
+<div class="px-4 mb-4 flex justify-between items-end">
+<h2 class="text-xl font-bold">Active Projects</h2>
+<a class="text-primary text-sm font-bold" href="#">View All</a>
+</div>
+<div class="divide-y divide-slate-200 dark:divide-white/5 bg-white dark:bg-white/5 mx-4 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden">
+<!-- List Item 1 -->
+<div class="flex items-center gap-4 px-4 py-4 justify-between hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="text-primary bg-primary/10 rounded-lg shrink-0 size-12 flex items-center justify-center">
+<span class="material-symbols-outlined">fence</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold leading-normal">Highview Fence</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal">Last updated: 5 days ago</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-3">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center gap-4 px-4 py-4 justify-between hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="text-primary bg-primary/10 rounded-lg shrink-0 size-12 flex items-center justify-center">
+<span class="material-symbols-outlined">format_paint</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold leading-normal">River St. Repaint</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal">Last updated: 1 week ago</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-3">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/95 dark:bg-background-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-white/10 px-6 py-3 pb-8 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined font-bold">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Projects</span>
+</a>
+<div class="-mt-12 flex flex-col items-center">
+<button class="bg-primary size-14 rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white border-4 border-background-light dark:border-background-dark active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Clients</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

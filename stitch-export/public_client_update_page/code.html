@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Public Client Update Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1173d4",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #324d67;
+            z-index: 0;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1">lock</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Secure Portal</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">Kitchen Remodel - 42 Oak St.</h2>
+</div>
+<div class="flex items-center">
+<button class="flex items-center justify-center rounded-full size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="max-w-md mx-auto px-4 py-4">
+<!-- Section Header / Status -->
+<div class="mb-6">
+<p class="text-slate-500 dark:text-[#92adc9] text-sm font-bold leading-normal text-center bg-slate-100 dark:bg-white/5 py-2 rounded-lg">
+                Last updated: Today, 10:30 AM
+            </p>
+</div>
+<!-- Timeline Feed -->
+<div class="relative space-y-8 timeline-line">
+<!-- Update Card 1 (Latest) -->
+<div class="relative z-10 grid grid-cols-[40px_1fr] gap-x-3">
+<div class="flex flex-col items-center">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-background-light dark:ring-background-dark">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Phase 3: Cabinetry &amp; Electrical</h3>
+<p class="text-primary text-sm font-semibold">Today • Oct 24, 2023</p>
+</div>
+<!-- AI Summary Card -->
+<div class="bg-white dark:bg-[#192633] rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
+<span class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-[#92adc9]">AI Summary</span>
+</div>
+<ul class="space-y-3">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">Electrical rough-in completed and tested for safety.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">Lower cabinet frames anchored and leveled perfectly.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-base mt-0.5">calendar_today</span>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">Countertop templating scheduled for tomorrow at 9 AM.</p>
+</li>
+</ul>
+</div>
+<!-- Voice Note Player -->
+<div class="bg-slate-100 dark:bg-[#253648] rounded-xl p-3 flex items-center gap-3 border border-slate-200 dark:border-slate-700">
+<button class="size-10 rounded-full bg-primary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<div class="flex-1">
+<p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#92adc9]">Site Manager Update</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="h-1 flex-1 bg-slate-300 dark:bg-slate-600 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3"></div>
+</div>
+<span class="text-[10px] font-mono text-slate-500 dark:text-[#92adc9]">0:42 / 1:15</span>
+</div>
+</div>
+</div>
+<!-- Image Gallery Grid -->
+<div class="grid grid-cols-2 gap-2">
+<div class="aspect-square rounded-lg bg-cover bg-center" data-alt="Modern kitchen under construction with cabinet frames" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBm3vgh6JBjmy-klzyNM-lVai6QB25uz6SzzbBwXe8pcKvaMwkmZYZcHMWR8x6afpP7kBZi3sGRC-mxqrshBiOd-z3nr5mckNzpcjrd5IU1-qt06YvTjkIjISInrLbkYUnfcd4JoCnuasMl2A4EYOnnZuGA0H165GUTZ2nz55z01i-ZGYcgY_sNCrOTbQWd79Enzs1dMa51QI2gzmZWCEIX5Zl0T1t_bYNSUfNogFmcUkHLrO1RZmVop5TaTuoTj20Iuco5dmFZspVc')"></div>
+<div class="aspect-square rounded-lg bg-cover bg-center" data-alt="Electrical wiring detail in a wall during renovation" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD5RrpTR_81Lj5XIn-QFTsoBAGzJZaUeNuR5JFllBNAzXsQ0QKxzg31EykDkUvmFR2lagmd77xNGy1L2F5RSk2PCA0MsLPCHX6WY5E607OhY8S_eBR1Fv-uDT0rWSKQlenEP6MQdx2lpc63aWo6HXBj1QI3LAtK6I7ChxBHINrHbHonBdDzoR0rtMCPfvhPCrZZDgSgR101ceGnQg6FXPY6xvudKBW4AjZe-CoUh_PKwFlNKgcUSd2KpuHXv2fPm8TMmFwOU3zeQZ72')"></div>
+</div>
+</div>
+</div>
+<!-- Update Card 2 (Previous) -->
+<div class="relative z-10 grid grid-cols-[40px_1fr] gap-x-3 opacity-80">
+<div class="flex flex-col items-center">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 ring-4 ring-background-light dark:ring-background-dark">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Phase 2: Subfloor &amp; Demolition</h3>
+<p class="text-slate-500 dark:text-[#92adc9] text-sm font-medium">Oct 20, 2023</p>
+</div>
+<div class="bg-white dark:bg-[#192633] rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<ul class="space-y-3">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-slate-400 dark:text-[#92adc9] text-base mt-0.5">check_circle</span>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">Full demolition of old island and plumbing stack removal.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-slate-400 dark:text-[#92adc9] text-base mt-0.5">check_circle</span>
+<p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">New moisture barrier installed on subfloor.</p>
+</li>
+</ul>
+</div>
+<div class="aspect-video w-full rounded-lg bg-cover bg-center" data-alt="Construction site during early demolition phase" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQxoNGAftdRWlXp9n6vkT9zh_cUO_gwg60qECBCj2pl6HbIvRrO1ZQjMQEXxA6heGsi95llYZkb_3g8653aiY2yRZU7y9n9ld4BlNFlFzTFB3wMxLPft114nDSN51Jgtoz3pOG_ckdDm18Jy0UFJrT2Ktzwqhv9lgCYVaA059_3huazugEdncfpjgSdtl69Wd3APeEU73YHrfNuKsZ5pLQCunYJZAUHTm_Mk9Nsr9IXPfUNI2nojEpWzuIhDe_hbwebSzhRcH9lzGd')"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button Area (iOS Style) -->
+<div class="fixed bottom-0 left-0 right-0 p-4 pb-8 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-[0_8px_30px_rgb(17,115,212,0.4)] flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span>Ask a Question</span>
+</button>
+<p class="text-center text-[10px] text-slate-400 dark:text-slate-500 mt-3 font-medium tracking-wide uppercase">
+                Secure link active • Response time: ~2 hours
+            </p>
+</div>
+</div>
+</body></html>

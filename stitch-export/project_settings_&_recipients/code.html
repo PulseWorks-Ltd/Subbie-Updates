@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Settings &amp; Recipients</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2590d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden max-w-[480px] mx-auto shadow-2xl">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-50 border-b border-slate-200 dark:border-white/10">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Project Settings</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">Save</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<!-- SectionHeader -->
+<h3 class="text-slate-500 dark:text-[#cba490] text-xs font-bold leading-tight tracking-[0.05em] px-4 pb-2 pt-6 uppercase">Project Details</h3>
+<!-- Project Name Field -->
+<div class="flex flex-wrap items-end gap-4 px-4 py-1">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">Project Name</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-slate-200 dark:bg-[#492f22] h-14 placeholder:text-slate-400 dark:placeholder:text-[#cba490]/50 p-4 text-base font-normal leading-normal" value="Residence Renovation - Block A"/>
+</label>
+</div>
+<!-- Update Frequency -->
+<div class="px-4 py-3">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">Update Frequency</p>
+<div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-slate-200 dark:bg-[#492f22] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-[#cba490] text-sm font-medium leading-normal transition-all">
+<span class="truncate">Weekly</span>
+<input checked="" class="invisible w-0" name="freq" type="radio" value="Weekly"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-[#cba490] text-sm font-medium leading-normal transition-all">
+<span class="truncate">Fortnightly</span>
+<input class="invisible w-0" name="freq" type="radio" value="Fortnightly"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-[#cba490] text-sm font-medium leading-normal transition-all">
+<span class="truncate">Monthly</span>
+<input class="invisible w-0" name="freq" type="radio" value="Monthly"/>
+</label>
+</div>
+</div>
+<!-- Toggle for Client Questions -->
+<div class="flex items-center gap-4 px-4 min-h-14 justify-between">
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-tight">Allow Client Questions</p>
+<p class="text-slate-500 dark:text-[#cba490] text-xs">Recipients can reply to updates</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-300 dark:bg-[#492f22] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-4 border-b border-slate-200 dark:border-white/10 mx-4"></div>
+<!-- SectionHeader: Recipients -->
+<div class="flex items-center justify-between px-4 pb-2 pt-8">
+<h3 class="text-slate-500 dark:text-[#cba490] text-xs font-bold leading-tight tracking-[0.05em] uppercase">Recipients</h3>
+<div class="flex items-center gap-2 bg-primary/10 px-2 py-1 rounded">
+<span class="text-primary text-[10px] font-bold uppercase tracking-wider">2 of 2 used</span>
+</div>
+</div>
+<!-- Recipients List -->
+<div class="flex flex-col px-4 gap-3">
+<!-- Recipient 1 -->
+<div class="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-4 rounded-xl border border-slate-200 dark:border-white/10">
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Johnathan Miller</p>
+<p class="text-slate-500 dark:text-[#cba490] text-sm">j.miller@client-email.com</p>
+</div>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Recipient 2 -->
+<div class="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-4 rounded-xl border border-slate-200 dark:border-white/10">
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Sarah Thompson</p>
+<p class="text-slate-500 dark:text-[#cba490] text-sm">sarah.t@homeowner.com</p>
+</div>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Upgrade Warning Card -->
+<div class="mx-4 mt-6 p-4 rounded-xl bg-primary/5 border border-primary/20 flex gap-4 items-start">
+<div class="text-primary">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white text-sm font-bold">Recipient Cap Reached</p>
+<p class="text-slate-500 dark:text-[#cba490] text-xs mt-1">Your current plan allows for 2 recipients per project. Upgrade to "Builder Pro" for unlimited recipients.</p>
+<button class="mt-3 text-primary text-sm font-bold flex items-center gap-1">
+                        Upgrade Plan <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Disabled Add Button -->
+<div class="px-4 py-8">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-200 dark:bg-white/10 px-4 h-14 text-slate-400 dark:text-white/30 font-bold opacity-60 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">person_add</span>
+                    Add Recipient
+                </button>
+<p class="text-center text-slate-400 dark:text-[#cba490]/40 text-[10px] mt-4 leading-relaxed px-8">
+                    Recipients will receive project updates via email. You can remove or edit them at any time. All data is processed according to our Privacy Policy.
+                </p>
+</div>
+</div>
+<!-- Bottom Safe Area Spacer -->
+<div class="h-8 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

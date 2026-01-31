@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Edit Summary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2590d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 ios-blur border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto w-full">
+<button class="text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Review &amp; Edit</h2>
+<div class="w-10 flex justify-end">
+<button class="text-primary font-bold">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-1 overflow-y-auto pb-40">
+<div class="max-w-md mx-auto w-full flex flex-col gap-6 p-4">
+<!-- Project Title Section -->
+<section>
+<div class="flex flex-col w-full">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-bold uppercase tracking-wider pb-2">Project Title</p>
+<input class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200 dark:border-[#492f22] bg-white dark:bg-[#342218] h-14 p-4 text-base font-medium" type="text" value="Mobile App Re-design (Q3)"/>
+</div>
+</section>
+<!-- Summary Bullets Section -->
+<section>
+<div class="flex items-center justify-between pb-2">
+<h3 class="text-slate-600 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Summary Bullets</h3>
+<button class="text-primary flex items-center gap-1 text-sm font-bold">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                        Add
+                    </button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Bullet 1 -->
+<div class="flex items-center gap-3 bg-white dark:bg-[#342218] p-3 rounded-xl border border-slate-200 dark:border-[#492f22]">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined">segment</span>
+</div>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-slate-900 dark:text-white text-base flex-1" value="Revamped the landing page hero section"/>
+<button class="text-slate-400 dark:text-slate-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Bullet 2 -->
+<div class="flex items-center gap-3 bg-white dark:bg-[#342218] p-3 rounded-xl border border-slate-200 dark:border-[#492f22]">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined">segment</span>
+</div>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-slate-900 dark:text-white text-base flex-1" value="Optimized mobile navigation menu"/>
+<button class="text-slate-400 dark:text-slate-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Bullet 3 -->
+<div class="flex items-center gap-3 bg-white dark:bg-[#342218] p-3 rounded-xl border border-slate-200 dark:border-[#492f22]">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined">segment</span>
+</div>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-slate-900 dark:text-white text-base flex-1" value="Improved color contrast ratios"/>
+<button class="text-slate-400 dark:text-slate-500 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Current Progress Section -->
+<section>
+<div class="flex flex-col w-full">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-bold uppercase tracking-wider pb-2">Current Progress</p>
+<textarea class="form-textarea flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200 dark:border-[#492f22] bg-white dark:bg-[#342218] p-4 text-base font-normal leading-relaxed resize-none" rows="4">The design phase for the core dashboard is 85% complete. We have finalized the typography system and the primary component library. Feedback from initial stakeholder review was positive.</textarea>
+</div>
+</section>
+<!-- Next Steps Section -->
+<section>
+<div class="flex flex-col w-full">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-bold uppercase tracking-wider pb-2">Next Steps</p>
+<textarea class="form-textarea flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200 dark:border-[#492f22] bg-white dark:bg-[#342218] p-4 text-base font-normal leading-relaxed resize-none" rows="3">1. Finalize the settings panel design
+2. Start high-fidelity prototyping
+3. Schedule hand-off meeting with dev team</textarea>
+</div>
+</section>
+<!-- AI Notice -->
+<div class="flex items-start gap-3 p-4 bg-primary/5 rounded-xl border border-primary/20">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<p class="text-xs text-slate-600 dark:text-slate-400">Content was generated by AI. Please review for accuracy before sending to clients.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-background-light/90 dark:bg-background-dark/90 ios-blur border-t border-slate-200 dark:border-white/10 p-4 pb-8">
+<div class="max-w-md mx-auto w-full flex flex-col gap-3">
+<button class="flex items-center justify-center gap-2 w-full h-14 bg-primary/10 dark:bg-primary/20 text-primary rounded-xl font-bold transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">refresh</span>
+                Re-generate Content
+            </button>
+<button class="flex items-center justify-center gap-2 w-full h-14 bg-primary text-white rounded-xl font-bold text-lg shadow-lg shadow-primary/30 transition-all active:scale-[0.98]">
+                Send Update to Clients
+                <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</footer>
+</body></html>

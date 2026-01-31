@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Billing &amp; Usage Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2590d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-bottom-nav {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">arrow_back_ios_new</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Billing &amp; Usage</h1>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto max-w-md mx-auto w-full pb-32">
+<!-- Current Plan Status Card -->
+<div class="p-4">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-[#342218] border border-slate-200 dark:border-white/5 overflow-hidden">
+<div class="w-full h-32 bg-center bg-no-repeat bg-cover relative" data-alt="Modern construction site with orange machinery" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeHFSXyav7Y8rIKIU10gNbdDWoTH8zbPUlUrlubVZmUe1JOOFUzNKn_lCLwZG3-zU3WxOhI8b7Gue2ZJdjiJJHh-WtscSgcl8RZ0GVzUQGRONHAG4qKSywu70uKqoR5chVIZzru6ZBJbk8qQRFZFP4VMNBB--JSio7pkRdKlbIG0-NnUlIxL0HH8xWlvIL63GHJrlPN6t-ZguxmatX07HQNYFZDaSZFMzkjyucUGmMgd5DTvyx-3dKHcJjVGbHol9QAbPFOHgcqqG0");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#342218] to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Active Subscription</span>
+</div>
+</div>
+<div class="flex w-full flex-col items-stretch justify-center gap-1 p-5">
+<p class="text-slate-500 dark:text-[#cba490] text-sm font-medium">Current Status</p>
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight">Pro Plan</p>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="mt-4 flex items-center justify-between bg-primary/10 dark:bg-primary/20 p-3 rounded-lg border border-primary/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">event</span>
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Trial ends in 5 days</p>
+</div>
+<button class="flex items-center justify-center rounded-lg h-8 px-4 bg-primary text-white text-xs font-bold uppercase tracking-tight hover:brightness-110 transition-all">
+                            Upgrade
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Metrics Section -->
+<div class="px-4 py-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bar_chart</span>
+                Usage Limits
+            </h3>
+<!-- Active Projects Progress -->
+<div class="flex flex-col gap-3 p-4 bg-white dark:bg-[#2d1d15] rounded-xl border border-slate-200 dark:border-white/5 mb-4 shadow-sm">
+<div class="flex gap-6 justify-between items-end">
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Active Projects</p>
+<p class="text-slate-500 dark:text-[#cba490] text-xs font-normal">Jobs currently in progress</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-normal">8 / 10</p>
+</div>
+<div class="h-3 rounded-full bg-slate-100 dark:bg-[#684331] overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 80%;"></div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-slate-400 dark:text-[#cba490] text-xs">info</span>
+<p class="text-slate-500 dark:text-[#cba490] text-xs font-normal leading-normal">2 projects remaining this month</p>
+</div>
+</div>
+<!-- Recipients Progress -->
+<div class="flex flex-col gap-3 p-4 bg-white dark:bg-[#2d1d15] rounded-xl border border-slate-200 dark:border-white/5 mb-4 shadow-sm">
+<div class="flex gap-6 justify-between items-end">
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Recipients</p>
+<p class="text-slate-500 dark:text-[#cba490] text-xs font-normal">Clients receiving updates</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-normal">45 / 50</p>
+</div>
+<div class="h-3 rounded-full bg-slate-100 dark:bg-[#684331] overflow-hidden">
+<div class="h-full rounded-full bg-red-500" style="width: 90%;"></div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-red-500 text-xs">warning</span>
+<p class="text-red-500 text-xs font-bold leading-normal uppercase">Near plan limit</p>
+</div>
+</div>
+</div>
+<!-- Stripe Portal Action -->
+<div class="p-4">
+<button class="w-full flex items-center justify-between p-5 bg-slate-900 dark:bg-primary text-white rounded-xl shadow-xl active:scale-[0.98] transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl">payments</span>
+<div class="text-left">
+<span class="block text-sm font-bold uppercase tracking-wider">Manage Billing</span>
+<span class="block text-[10px] opacity-80">Portal secured by Stripe</span>
+</div>
+</div>
+<span class="material-symbols-outlined">open_in_new</span>
+</button>
+<p class="mt-4 text-center text-slate-400 dark:text-[#cba490] text-xs px-8">
+                View previous invoices, update your payment method, or cancel your subscription.
+            </p>
+</div>
+<!-- Support -->
+<div class="px-4 py-6 flex flex-col items-center gap-2">
+<p class="text-slate-500 dark:text-[#cba490] text-sm font-normal">Need a custom plan?</p>
+<a class="text-primary font-bold hover:underline underline-offset-4 flex items-center gap-1" href="#">
+                Contact Sales Support
+                <span class="material-symbols-outlined text-sm">chat_bubble</span>
+</a>
+</div>
+</main>
+<!-- Bottom Navigation (iOS Style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-background-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 ios-bottom-nav z-50">
+<div class="max-w-md mx-auto flex justify-around items-center h-16 px-4">
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-[26px]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-[26px]">foundation</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Jobs</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[26px] fill-current" style="font-variation-settings: 'FILL' 1">account_balance_wallet</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Billing</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

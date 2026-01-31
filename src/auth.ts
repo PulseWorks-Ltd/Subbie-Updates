@@ -15,6 +15,9 @@ const trustHost =
 export const { handlers, auth, signIn, signOut } = NextAuth({
     secret: authSecret,
     trustHost,
+    pages: {
+        signIn: "/login",
+    },
     adapter: PrismaAdapter(prisma),
     providers: [
         Credentials({
