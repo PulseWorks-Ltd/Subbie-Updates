@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { ProjectCard } from "@/components/feature/ProjectCard";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { computeProjectStatus } from "@/lib/helpers/projectStatus";
 
 export default async function DashboardPage() {
