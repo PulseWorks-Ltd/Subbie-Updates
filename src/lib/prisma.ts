@@ -2,7 +2,10 @@
 import { PrismaClient } from "@prisma/client";
 
 // Singleton to prevent multiple instances during dev hot reload
-const prismaClientSingleton = () => new PrismaClient();
+const prismaClientSingleton = () =>
+  new PrismaClient({
+    datasourceUrl: process.env.DATABASE_URL,
+  });
 
 declare global {
   var prisma: PrismaClient | undefined;
