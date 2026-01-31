@@ -15,7 +15,7 @@ export function computeProjectStatus(lastUpdate: Date | null, frequency: "WEEKLY
     switch (frequency) {
         case "WEEKLY":
             return diffDays > 7 ? "Overdue" : diffDays > 5 ? "Due Soon" : "On Track";
-        case "FORTNIGHTLY": // Changed from BIWEEKLY to match Schema enum
+        case "BIWEEKLY":
             return diffDays > 14 ? "Overdue" : diffDays > 12 ? "Due Soon" : "On Track";
         case "MONTHLY":
             return diffDays > 30 ? "Overdue" : diffDays > 27 ? "Due Soon" : "On Track";

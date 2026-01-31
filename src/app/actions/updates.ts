@@ -20,7 +20,7 @@ export async function createUpdate(projectId: string, formData: FormData) {
 
     if (!project) throw new Error("Project not found");
 
-    const hasAccess = project.org.users.some(u => u.userId === session.user.id);
+    const hasAccess = project.org.users.some((u: typeof project.org.users[0]) => u.userId === session.user?.id);
     if (!hasAccess) throw new Error("Unauthorized access to project");
 
     const summary = formData.get("summary") as string;
@@ -43,7 +43,7 @@ export async function submitUpdateAction(projectId: string, data: { summary: str
     });
 
     if (!project) throw new Error("Project not found");
-    const hasAccess = project.org.users.some(u => u.userId === session.user.id);
+    const hasAccess = project.org.users.some((u: typeof project.org.users[0]) => u.userId === session.user?.id);
     if (!hasAccess) throw new Error("Unauthorized access to project");
 
     const update = await prisma.update.create({

@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/feature/ProjectCard";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { computeProjectStatus } from "@/lib/helpers/projectStatus";
+import { formatDistanceToNow } from "date-fns";
 
 export default async function DashboardPage() {
     const session = await auth();
@@ -37,12 +38,12 @@ export default async function DashboardPage() {
         orderBy: { createdAt: "desc" }
     });
 
-    const overdueProjects = projects.filter(p => {
+    const overdueProjects = projects.filter((p: typeof projects[0]) => {
         // @ts-ignore
         return computeProjectStatus(p.updates[0]?.createdAt || null, p.frequency) === "Overdue";
     });
 
-    const otherProjects = projects.filter(p => {
+    const otherProjects = projects.filter((p: typeof projects[0]) => {
         // @ts-ignore
         return computeProjectStatus(p.updates[0]?.createdAt || null, p.frequency) !== "Overdue";
     });
@@ -88,7 +89,7 @@ export default async function DashboardPage() {
                         <span className="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full border border-primary/30">URGENT</span>
                     </div>
                     <div className="space-y-3 px-4">
-                        {overdueProjects.map(project => (
+                        {overdueProjects.map((project: typeof projects[0]) => (
                             // @ts-ignore
                             <ProjectCard key={project.id} project={project} />
                         ))}
@@ -103,7 +104,7 @@ export default async function DashboardPage() {
                     <Link className="text-primary text-sm font-bold" href="#">View All</Link>
                 </div>
                 <div className="divide-y divide-slate-200 dark:divide-white/5 bg-white dark:bg-white/5 mx-4 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden">
-                    {otherProjects.map(project => (
+                    {otherProjects.map((project: typeof projects[0]) => (
                         <Link key={project.id} href={`/project/${project.id}/update`} className="flex items-center gap-4 px-4 py-4 justify-between hover:bg-slate-50 dark:hover:bg-white/5 cursor-pointer">
                             <div className="flex items-center gap-4">
                                 <div className="text-primary bg-primary/10 rounded-lg shrink-0 size-12 flex items-center justify-center">

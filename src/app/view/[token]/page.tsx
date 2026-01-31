@@ -51,7 +51,7 @@ export default async function PublicUpdateView({ params }: { params: Promise<{ t
                 {/* Assets Grid */}
                 {update.assets.length > 0 && (
                     <div className="grid grid-cols-2 gap-2">
-                        {update.assets.map(asset => (
+                        {update.assets.map((asset: typeof update.assets[0]) => (
                             // In real app, generate presigned GET url or use public bucket URL if configured
                             // Assuming public-read or using CloudFront for 'uploads/'
                             <div key={asset.id} className="relative aspect-square rounded-lg overflow-hidden bg-slate-100 dark:bg-white/5">

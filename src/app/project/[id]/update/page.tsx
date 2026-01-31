@@ -17,7 +17,7 @@ export default async function UpdatePage({ params }: { params: Promise<{ id: str
 
     if (!project) return <div>Project Not Found</div>;
 
-    const hasAccess = project.org.users.some(u => u.userId === session.user.id);
+    const hasAccess = project.org.users.some((u: typeof project.org.users[0]) => u.userId === session.user?.id);
     // Optional: Also allow Recipient access via magic link later, but for composer it's user only
     if (!hasAccess) return <div>Unauthorized</div>;
 
