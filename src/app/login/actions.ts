@@ -1,11 +1,16 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { isRedirectError } from "next/dist/client/components/redirect";
 import { signIn } from "@/auth";
 
 function encodeError(message: string) {
   return encodeURIComponent(message);
+}
+
+function isNextRedirect(error: unknown) {
+  if (!error || typeof error !== "object") return false;
+  const digest = (error as { digest?: string }).digest;
+  return typeof digest === "string" && digest.startsWith("NEXT_REDIRECT");
 }
 
 export async function loginWithCredentials(formData: FormData) {
@@ -23,7 +28,7 @@ export async function loginWithCredentials(formData: FormData) {
       redirectTo: "/dashboard",
     });
   } catch (error) {
-    if (isRedirectError(error)) {
+    if (isNextRedirect(error)) {
       throw error;
     }
     redirect(`/login?error=${encodeError("Sign in failed. Check your details and try again.")}`);
