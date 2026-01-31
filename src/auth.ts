@@ -6,7 +6,15 @@ import Credentials from "next-auth/providers/credentials"
 import { z } from "zod"
 import bcrypt from "bcrypt"
 
+const authSecret = process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET;
+const trustHost =
+    process.env.AUTH_TRUST_HOST === "true" ||
+    process.env.VERCEL === "1" ||
+    process.env.RAILWAY_ENVIRONMENT !== undefined;
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
+    secret: authSecret,
+    trustHost,
     adapter: PrismaAdapter(prisma),
     providers: [
         Credentials({
