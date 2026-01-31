@@ -9,8 +9,8 @@ export default function SignupPage({
   const errorMessage = searchParams?.error;
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col">
-      <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-white/5">
+    <div className="bg-background-dark text-white min-h-screen flex flex-col">
+      <div className="flex items-center bg-background-dark p-4 pb-2 justify-between border-b border-white/5">
         <Link href="/" className="text-primary flex size-12 shrink-0 items-center cursor-pointer">
           <span className="material-symbols-outlined" style={{ fontSize: 28 }}>
             chevron_left

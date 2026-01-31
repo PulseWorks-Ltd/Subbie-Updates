@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect";
 import { signIn } from "@/auth";
 
 function encodeError(message: string) {
@@ -22,6 +23,9 @@ export async function loginWithCredentials(formData: FormData) {
       redirectTo: "/dashboard",
     });
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     redirect(`/login?error=${encodeError("Sign in failed. Check your details and try again.")}`);
   }
 }
