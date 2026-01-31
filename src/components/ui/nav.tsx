@@ -15,20 +15,23 @@ export function BottomNav() {
                 <span className="material-symbols-outlined font-bold">dashboard</span>
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Dashboard</span>
             </Link>
-            <Link className={`flex flex-col items-center gap-1 ${isActive('/projects') ? 'text-primary' : 'text-slate-400'}`} href="#">
+            <Link className={`flex flex-col items-center gap-1 ${isActive('/projects') ? 'text-primary' : 'text-slate-400'}`} href="/projects">
                 <span className="material-symbols-outlined">folder</span>
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Projects</span>
             </Link>
             <div className="-mt-12 flex flex-col items-center">
-                <button className="bg-primary size-14 rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white border-4 border-background-light dark:border-background-dark active:scale-90 transition-transform cursor-pointer">
+                <Link
+                    href="/projects/new"
+                    className="bg-primary size-14 rounded-full shadow-lg shadow-primary/40 flex items-center justify-center text-white border-4 border-background-light dark:border-background-dark active:scale-90 transition-transform cursor-pointer"
+                >
                     <span className="material-symbols-outlined text-3xl">add</span>
-                </button>
+                </Link>
             </div>
-            <Link className={`flex flex-col items-center gap-1 ${isActive('/clients') ? 'text-primary' : 'text-slate-400'}`} href="#">
+            <Link className={`flex flex-col items-center gap-1 ${isActive('/clients') ? 'text-primary' : 'text-slate-400'}`} href="/clients">
                 <span className="material-symbols-outlined">group</span>
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Clients</span>
             </Link>
-            <Link className={`flex flex-col items-center gap-1 ${isActive('/settings') ? 'text-primary' : 'text-slate-400'}`} href="#">
+            <Link className={`flex flex-col items-center gap-1 ${isActive('/settings') ? 'text-primary' : 'text-slate-400'}`} href="/settings">
                 <span className="material-symbols-outlined">settings</span>
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Settings</span>
             </Link>

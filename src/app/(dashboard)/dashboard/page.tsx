@@ -54,23 +54,22 @@ export default async function DashboardPage() {
             <header className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5">
                 <div className="flex items-center px-4 py-4 justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="size-10 overflow-hidden rounded-full border-2 border-primary bg-slate-200">
-                            {/* Placeholder Avatar */}
+                        <Link href="/settings" className="size-10 overflow-hidden rounded-full border-2 border-primary bg-slate-200">
                             {user.image ? (
                                 <img src={user.image} alt="Profile" className="w-full h-full object-cover" />
                             ) : (
                                 <div className="w-full h-full flex items-center justify-center text-primary font-bold text-xs">{user.name?.slice(0, 2).toUpperCase() || "ME"}</div>
                             )}
-                        </div>
+                        </Link>
                         <div>
                             <p className="text-[10px] uppercase tracking-widest text-primary font-bold">Main Dashboard</p>
                             <h2 className="text-lg font-bold leading-tight">{activeOrg.name}</h2>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className="flex size-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white">
+                        <Link href="/notifications" className="flex size-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white">
                             <span className="material-symbols-outlined">notifications</span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </header>
