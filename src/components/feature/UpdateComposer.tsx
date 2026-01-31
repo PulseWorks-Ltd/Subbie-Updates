@@ -19,7 +19,9 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isGenerating, setIsGenerating] = useState(false);
     const [uploads, setUploads] = useState<{ key: string; url: string; type: string }[]>([]);
+    const [audioKey, setAudioKey] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const audioInputRef = useRef<HTMLInputElement>(null);
 
     const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files?.length) return;
@@ -50,12 +52,14 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
     };
 
     const handleSubmit = async () => {
-        if (!summary) return;
+        if (!summary && !audioKey) return;
         setIsSubmitting(true);
         try {
             const result = await submitUpdateAction(projectId, {
-                summary,
+                summary: summary || "Voice update submitted. Transcription in progress.",
                 assets: uploads.map(u => ({ key: u.key, types: u.type }))
+                ,
+                audioKey: audioKey || undefined
             });
             if (result?.publicToken) {
                 router.push(`/updates/sent?token=${result.publicToken}`);
@@ -65,6 +69,27 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
         } catch (error) {
             alert("Failed to create update.");
             setIsSubmitting(false);
+        }
+    };
+
+    const handleAudioSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files?.length) return;
+        const file = e.target.files[0];
+        const contentType = file.type || "audio/mpeg";
+
+        try {
+            const { signedUrl, key } = await getPresignedUrl(file.name, contentType);
+
+            await fetch(signedUrl, {
+                method: "PUT",
+                headers: { "Content-Type": contentType },
+                body: file,
+            });
+
+            setAudioKey(key);
+        } catch (error) {
+            console.error("Audio upload failed", error);
+            alert("Failed to upload audio. Please try again.");
         }
     };
 
@@ -126,12 +151,22 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
                         onChange={handleFileSelect}
                     />
 
-                    <button className="flex-1 flex flex-col gap-3 items-center justify-center aspect-square rounded-xl bg-white dark:bg-[#342218] border border-gray-200 dark:border-[#684331] text-gray-900 dark:text-white opacity-50 cursor-not-allowed">
+                    <button
+                        onClick={() => audioInputRef.current?.click()}
+                        className="flex-1 flex flex-col gap-3 items-center justify-center aspect-square rounded-xl bg-white dark:bg-[#342218] border border-gray-200 dark:border-[#684331] text-gray-900 dark:text-white transition-active active:scale-95"
+                    >
                         <div className="size-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                             <span className="material-symbols-outlined" style={{ fontSize: "32px" }}>mic</span>
                         </div>
-                        <span className="font-bold text-sm">Record Voice</span>
+                        <span className="font-bold text-sm">Upload Voice</span>
                     </button>
+                    <input
+                        type="file"
+                        ref={audioInputRef}
+                        className="hidden"
+                        accept="audio/*"
+                        onChange={handleAudioSelect}
+                    />
                 </section>
 
                 {/* Uploaded Images Preview */}

@@ -1,4 +1,4 @@
-import { startCheckout, openCustomerPortal } from "@/app/actions/billing";
+import { startCheckoutAction, openCustomerPortal } from "@/app/actions/billing";
 
 export default function BillingPage({
   searchParams,
@@ -34,7 +34,7 @@ export default function BillingPage({
           </div>
         )}
 
-        <form action={startCheckout}>
+        <form action={startCheckoutAction}>
           <button className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg">
             Start subscription
           </button>

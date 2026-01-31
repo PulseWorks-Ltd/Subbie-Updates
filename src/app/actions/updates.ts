@@ -33,14 +33,14 @@ export async function createUpdate(projectId: string, formData: FormData) {
 }
 
 // Better approach: Server Action receiving data object
-export async function submitUpdateAction(projectId: string, data: { summary: string, assets: { key: string, types: string }[] }) {
+export async function submitUpdateAction(projectId: string, data: { summary: string, assets: { key: string, types: string }[], audioKey?: string }) {
     const session = await auth();
     if (!session?.user?.id) throw new Error("Unauthorized");
 
     // Strict Tenant Check
     const project = await prisma.project.findUnique({
         where: { id: projectId },
-        include: { org: { include: { users: true } } }
+        include: { org: { include: { users: true } }, recipients: true }
     });
 
     if (!project) throw new Error("Project not found");
@@ -67,6 +67,20 @@ export async function submitUpdateAction(projectId: string, data: { summary: str
             }
         }
     });
+
+    if (data.audioKey) {
+        await prisma.jobQueue.create({
+            data: {
+                type: "TRANSCRIPTION",
+                status: "PENDING",
+                payload: {
+                    updateId: update.id,
+                    s3Key: data.audioKey,
+                    projectName: project.name,
+                },
+            },
+        });
+    }
 
     revalidatePath(`/dashboard`);
     revalidatePath(`/project/${projectId}/update`);

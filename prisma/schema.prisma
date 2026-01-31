@@ -80,6 +80,10 @@ model Update {
   projectId   String
   authorId    String
   summary     String   @db.Text
+  title       String?  @db.Text
+  transcript  String?  @db.Text
+  progress    String?  @db.Text
+  nextSteps   String?  @db.Text
   publicToken String   @unique @default(uuid()) // The "Share Link" key
 
   project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
@@ -87,6 +91,20 @@ model Update {
   assets      Asset[]
 
   createdAt   DateTime @default(now())
+}
+
+model JobQueue {
+  id        String    @id @default(cuid())
+  type      JobType
+  status    JobStatus @default(PENDING)
+  payload   Json
+  attempts  Int       @default(0)
+  lastError String?
+  runAt     DateTime  @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([status, runAt])
 }
 
 model Asset {
@@ -157,4 +175,16 @@ enum UpdateFrequency {
   WEEKLY
   FORTNIGHTLY
   MONTHLY
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+}
+
+enum JobType {
+  TRANSCRIPTION
+  IMAGE_OPTIMIZE
 }

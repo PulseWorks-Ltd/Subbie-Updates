@@ -1,4 +1,4 @@
-import { startCheckout } from "@/app/actions/billing";
+import { startCheckoutWithPrice } from "@/app/actions/billing";
 
 const plans = [
   {
@@ -24,9 +24,9 @@ export default function PlansPage() {
           {plans.map((plan) => (
             <form
               key={plan.id}
-              action={startCheckout.bind(
+              action={startCheckoutWithPrice.bind(
                 null,
-                process.env[plan.priceEnv] || process.env.STRIPE_PRICE_ID
+                process.env[plan.priceEnv] || process.env.STRIPE_PRICE_ID || ""
               )}
               className="rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-5 space-y-3"
             >

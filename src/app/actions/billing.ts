@@ -78,6 +78,14 @@ export async function startCheckout(priceId?: string) {
   redirect(checkoutSession.url);
 }
 
+export async function startCheckoutAction(_: FormData) {
+  await startCheckout();
+}
+
+export async function startCheckoutWithPrice(priceId: string) {
+  await startCheckout(priceId);
+}
+
 export async function openCustomerPortal() {
   const session = await auth();
   if (!session?.user?.email) {
