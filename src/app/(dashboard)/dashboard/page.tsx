@@ -9,7 +9,7 @@ import { formatDistanceToNow } from "date-fns";
 
 export default async function DashboardPage() {
     const session = await auth();
-    if (!session?.user?.email) redirect("/api/auth/signin");
+    if (!session?.user?.email) redirect("/login");
 
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
@@ -101,7 +101,10 @@ export default async function DashboardPage() {
             <section className="mt-8">
                 <div className="px-4 mb-4 flex justify-between items-end">
                     <h2 className="text-xl font-bold">Active Projects</h2>
-                    <Link className="text-primary text-sm font-bold" href="#">View All</Link>
+                    <div className="flex items-center gap-3">
+                        <Link className="text-primary text-sm font-bold" href="/projects">View All</Link>
+                        <Link className="text-primary text-sm font-bold" href="/projects/new">New</Link>
+                    </div>
                 </div>
                 <div className="divide-y divide-slate-200 dark:divide-white/5 bg-white dark:bg-white/5 mx-4 rounded-xl border border-slate-200 dark:border-white/10 overflow-hidden">
                     {otherProjects.map((project: typeof projects[0]) => (

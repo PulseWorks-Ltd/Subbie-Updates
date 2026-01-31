@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { sendUpdateEmail } from "@/lib/sendgrid";
 
 export async function createUpdate(projectId: string, formData: FormData) {
     const session = await auth();
@@ -15,7 +16,7 @@ export async function createUpdate(projectId: string, formData: FormData) {
     // For now, checking if user has access to the project via Org
     const project = await prisma.project.findUnique({
         where: { id: projectId },
-        include: { org: { include: { users: true } } }
+        include: { org: { include: { users: true } }, recipients: true }
     });
 
     if (!project) throw new Error("Project not found");
@@ -70,7 +71,26 @@ export async function submitUpdateAction(projectId: string, data: { summary: str
     revalidatePath(`/dashboard`);
     revalidatePath(`/project/${projectId}/update`);
 
-    // In a real app, send emails here (SendGrid)
+    const appUrl =
+        process.env.APP_URL ||
+        process.env.AUTH_URL ||
+        process.env.NEXTAUTH_URL ||
+        "http://localhost:3000";
 
-    return { success: true, updateId: update.id };
+    const shareUrl = `${appUrl}/view/${update.publicToken}`;
+
+    if (project.recipients.length > 0 && process.env.SENDGRID_FROM_EMAIL) {
+        await Promise.all(
+            project.recipients.map((recipient) =>
+                sendUpdateEmail({
+                    to: recipient.email,
+                    from: process.env.SENDGRID_FROM_EMAIL as string,
+                    subject: `Update for ${project.name}`,
+                    text: `Hi ${recipient.name},\n\nA new update is ready for ${project.name}.\n\nSummary:\n${data.summary}\n\nView the update: ${shareUrl}`,
+                })
+            )
+        );
+    }
+
+    return { success: true, updateId: update.id, publicToken: update.publicToken };
 }

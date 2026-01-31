@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { getPresignedUrl } from "@/app/actions/media";
 import { submitUpdateAction } from "@/app/actions/updates";
+import { generateAiSummary } from "@/app/actions/ai";
 import { useRouter } from "next/navigation";
 
 interface UpdateComposerProps {
@@ -16,6 +17,7 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
     const router = useRouter();
     const [summary, setSummary] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isGenerating, setIsGenerating] = useState(false);
     const [uploads, setUploads] = useState<{ key: string; url: string; type: string }[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -51,14 +53,33 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
         if (!summary) return;
         setIsSubmitting(true);
         try {
-            await submitUpdateAction(projectId, {
+            const result = await submitUpdateAction(projectId, {
                 summary,
                 assets: uploads.map(u => ({ key: u.key, types: u.type }))
             });
-            router.push("/dashboard");
+            if (result?.publicToken) {
+                router.push(`/updates/sent?token=${result.publicToken}`);
+            } else {
+                router.push("/dashboard");
+            }
         } catch (error) {
             alert("Failed to create update.");
             setIsSubmitting(false);
+        }
+    };
+
+    const handleGenerateSummary = async () => {
+        if (!summary.trim()) return;
+        setIsGenerating(true);
+        try {
+            const result = await generateAiSummary({ notes: summary, projectName });
+            if (result?.summary) {
+                setSummary(result.summary);
+            }
+        } catch (error) {
+            alert("Failed to generate AI summary.");
+        } finally {
+            setIsGenerating(false);
         }
     };
 
@@ -70,7 +91,13 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
                     <span className="material-symbols-outlined" style={{ fontSize: "28px" }}>arrow_back_ios_new</span>
                 </button>
                 <h2 className="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">{projectName}</h2>
-                <div className="size-10"></div>
+                <button
+                    onClick={() => router.push(`/project/${projectId}/settings`)}
+                    className="text-slate-500 dark:text-slate-300 flex size-10 items-center justify-center rounded-full hover:bg-slate-200/40 dark:hover:bg-white/5 transition-colors"
+                    aria-label="Project settings"
+                >
+                    <span className="material-symbols-outlined" style={{ fontSize: "24px" }}>settings</span>
+                </button>
             </header>
 
             {/* Main Content */}
@@ -133,9 +160,13 @@ export function UpdateComposer({ projectId, projectName }: UpdateComposerProps) 
 
                 {/* AI Trigger */}
                 <section className="py-4">
-                    <button className="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-gray-900 dark:bg-[#492f22] text-white gap-3 font-bold transition-all active:scale-[0.98] border border-white/5 shadow-lg opacity-50 cursor-not-allowed">
+                    <button
+                        onClick={handleGenerateSummary}
+                        disabled={isGenerating || !summary.trim()}
+                        className="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-gray-900 dark:bg-[#492f22] text-white gap-3 font-bold transition-all active:scale-[0.98] border border-white/5 shadow-lg disabled:opacity-50"
+                    >
                         <span className="material-symbols-outlined text-primary">auto_awesome</span>
-                        <span className="truncate">Generate AI Summary</span>
+                        <span className="truncate">{isGenerating ? "Generating..." : "Generate AI Summary"}</span>
                     </button>
                 </section>
 
