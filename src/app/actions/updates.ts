@@ -52,6 +52,8 @@ export async function submitUpdateAction(projectId: string, data: { summary: str
             projectId,
             authorId: session.user.id,
             summary: data.summary,
+            status: "SENT",
+            sentAt: new Date(),
             // assets: {
             //     create: data.assets.map(a => ({
             //         s3Key: a.key,

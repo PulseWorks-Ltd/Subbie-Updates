@@ -24,6 +24,7 @@ model User {
   sessions      Session[]
   orgs          OrgUser[]
   updates       Update[]
+  uploadedImages Image[]
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -62,6 +63,7 @@ model Project {
   org         Org             @relation(fields: [orgId], references: [id], onDelete: Cascade)
   recipients  Recipient[]
   updates     Update[]
+  images      Image[]
 
   createdAt   DateTime        @default(now())
 }
@@ -80,6 +82,8 @@ model Update {
   projectId   String
   authorId    String
   summary     String   @db.Text
+  status      UpdateStatus @default(SENT)
+  sentAt      DateTime?
   title       String?  @db.Text
   transcript  String?  @db.Text
   progress    String?  @db.Text
@@ -89,8 +93,43 @@ model Update {
   project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   author      User     @relation(fields: [authorId], references: [id])
   assets      Asset[]
+  updateImages UpdateImage[]
+  assignedImages Image[] @relation("AssignedUpdateImages")
 
   createdAt   DateTime @default(now())
+}
+
+model Image {
+  id               String   @id @default(cuid())
+  jobId            String
+  takenAt          DateTime
+  uploadedBy       String
+  assignedUpdateId String?
+  sentAt           DateTime?
+  s3Key            String
+  mimeType         String
+  createdAt        DateTime @default(now())
+
+  job             Project @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  uploader        User    @relation(fields: [uploadedBy], references: [id], onDelete: Cascade)
+  assignedUpdate  Update? @relation("AssignedUpdateImages", fields: [assignedUpdateId], references: [id])
+  updateLinks     UpdateImage[]
+
+  @@index([jobId, takenAt])
+  @@index([assignedUpdateId])
+}
+
+model UpdateImage {
+  id        String   @id @default(cuid())
+  updateId  String
+  imageId   String
+  createdAt DateTime @default(now())
+
+  update    Update   @relation(fields: [updateId], references: [id], onDelete: Cascade)
+  image     Image    @relation(fields: [imageId], references: [id], onDelete: Cascade)
+
+  @@unique([updateId, imageId])
+  @@index([imageId])
 }
 
 model JobQueue {
@@ -175,6 +214,11 @@ enum UpdateFrequency {
   WEEKLY
   FORTNIGHTLY
   MONTHLY
+}
+
+enum UpdateStatus {
+  DRAFT
+  SENT
 }
 
 enum JobStatus {
