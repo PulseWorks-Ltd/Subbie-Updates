@@ -19,7 +19,7 @@ export async function generateAiSummary(input: {
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
   const prompt = `Summarize the update for the client in 3-5 bullet points.\n\nProject: ${input.projectName ?? "Unknown"}\nNotes: ${input.notes}`;
   const result = await model.generateContent(prompt);
@@ -42,7 +42,7 @@ export async function generateTasksCompletedSummary(input: {
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
   const prompt = `You are a construction assistant.
 Generate a neutral, concise tasks-completed summary.
