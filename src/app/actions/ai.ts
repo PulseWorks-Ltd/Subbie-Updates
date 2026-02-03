@@ -7,9 +7,9 @@ const apiKey = process.env.GEMINI_API_KEY;
 
 const DEFAULT_MODEL_FALLBACKS = [
   process.env.GEMINI_MODEL,
-  "gemini-1.5-pro-latest",
+  "gemini-2.0-flash",
+  "gemini-1.5-flash",
   "gemini-1.5-pro",
-  "gemini-pro",
 ].filter(Boolean) as string[];
 
 async function generateWithFallback(prompt: string) {
